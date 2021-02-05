@@ -1,0 +1,519 @@
+#profile-page-section .saved-files-display .saved-files-container, #profile-page-section .data-display .data-table-container, #air-quality-section .air-quality-dispaly .air-quality-data .quality-value, #air-quality-section .air-quality-dispaly, #nearest-installations-section .single-installation .installation-header, #five-day-weather-section .five-day-weather-display .single-forecast, #current-weather-section .current-weather-display {
+  border-radius: 5px;
+  box-shadow: 0px 0px 2px 2px #e6e6e6;
+}
+
+.search-input, .register-input, .login-input {
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 16px;
+  box-sizing: border-box;
+  border: 2px solid #f2f2f2;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  outline: none;
+}
+
+.filename-input {
+  width: 100%;
+  padding: 6px 10px;
+  font-size: 14px;
+  box-sizing: border-box;
+  border: 2px solid #f2f2f2;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  outline: none;
+}
+
+.button-lg, .button-sm, .button-confirm {
+  display: inline-block;
+  color: #b3b3b3;
+  background-color: #ffffff;
+  text-decoration: none;
+  border: 2px solid #b3b3b3;
+  border-radius: 3px;
+  transition: color 0.2s, background-color 0.2s, border 0.2s;
+}
+
+.section-title {
+  font-family: "Montserrat";
+  font-size: 20px;
+}
+
+.button-confirm {
+  padding: 1px 12px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.button-sm {
+  padding: 6px 12px;
+  margin: 10px;
+  font-size: 14px;
+}
+
+.button-lg {
+  padding: 8px 14px;
+  margin: 10px;
+  font-size: 18px;
+}
+
+.alert-box {
+  position: absolute !important;
+  z-index: 1;
+  width: 100%;
+  padding: 12px 20px;
+  font-size: 15px;
+}
+
+.success {
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+.info {
+  background-color: #fff3cd;
+  border-color: #ffeeba;
+}
+
+.warning {
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+.button-confirm:hover, .button-sm:hover, .button-lg:hover {
+  color: #ffffff;
+  background-color: #b3b3b3;
+  border: 2px solid #b3b3b3;
+}
+
+.button-confirm:focus, .button-sm:focus, .button-lg:focus {
+  text-decoration: none;
+  outline: none;
+}
+
+.login-input:hover, .register-input:hover, .search-input:hover, .filename-input:hover, .login-input:focus, .register-input:focus, .search-input:focus, .filename-input:focus {
+  border: 2px solid #b3b3b3;
+}
+
+body {
+  font-family: "Montserrat" !important;
+}
+
+#navbar {
+  font-size: 16px;
+}
+#navbar .fa-cloud {
+  color: #99ddff;
+}
+
+#index-section {
+  margin: 80px 0;
+}
+#index-section .jumbotron .jumbotron-header .logo {
+  color: #99ddff;
+}
+#index-section .jumbotron .jumbotron-body {
+  margin-top: 50px;
+}
+#index-section .jumbotron .jumbotron-body i {
+  margin: 20px 0;
+  font-size: 60px;
+}
+
+#login-form {
+  margin: 80px 0;
+}
+
+#register-form {
+  margin: 80px 0;
+}
+
+#current-weather-section {
+  margin: 80px 0;
+}
+#current-weather-section .current-weather-search {
+  padding: 18px 0;
+}
+#current-weather-section .temperature-data {
+  border: 16px solid #b3b3b3;
+  border-radius: 100%;
+  height: 300px;
+  width: 300px;
+  margin: 25px;
+}
+#current-weather-section .temperature-data .img-info {
+  font-size: 14px;
+}
+#current-weather-section .temperature-data .temperature {
+  font-size: 50px;
+}
+#current-weather-section .temperature-data .feels-like {
+  font-size: 18px;
+}
+#current-weather-section .meteo-data {
+  border-left: 5px solid #b3b3b3;
+  margin: 25px 35px;
+}
+#current-weather-section .meteo-data .current-location, #current-weather-section .meteo-data .conditions, #current-weather-section .meteo-data .wind, #current-weather-section .meteo-data .pressure, #current-weather-section .meteo-data .humidity, #current-weather-section .meteo-data .visibility {
+  padding: 5px 15px;
+  font-size: 18px;
+}
+#current-weather-section .meteo-data .current-location .current-time, #current-weather-section .meteo-data .conditions .current-time, #current-weather-section .meteo-data .wind .current-time, #current-weather-section .meteo-data .pressure .current-time, #current-weather-section .meteo-data .humidity .current-time, #current-weather-section .meteo-data .visibility .current-time {
+  font-size: 14px;
+  color: #bfbfbf;
+}
+#current-weather-section .meteo-data .current-location .title, #current-weather-section .meteo-data .conditions .title, #current-weather-section .meteo-data .wind .title, #current-weather-section .meteo-data .pressure .title, #current-weather-section .meteo-data .humidity .title, #current-weather-section .meteo-data .visibility .title {
+  padding-right: 8px;
+}
+#current-weather-section .meteo-data .current-location i, #current-weather-section .meteo-data .conditions i, #current-weather-section .meteo-data .wind i, #current-weather-section .meteo-data .pressure i, #current-weather-section .meteo-data .humidity i, #current-weather-section .meteo-data .visibility i {
+  padding: 0 3px;
+}
+@media only screen and (max-width: 1000px) {
+  #current-weather-section .temperature-data {
+    border: 16px solid #b3b3b3;
+    border-radius: 100%;
+    height: 240px;
+    width: 240px;
+    margin: 20px;
+  }
+  #current-weather-section .temperature-data img {
+    width: 90px;
+    height: 90px;
+  }
+  #current-weather-section .temperature-data .img-info {
+    font-size: 12px;
+  }
+  #current-weather-section .temperature-data .temperature {
+    font-size: 40px;
+  }
+  #current-weather-section .temperature-data .feels-like {
+    font-size: 15px;
+  }
+  #current-weather-section .meteo-data {
+    border-left: 5px solid #b3b3b3;
+    margin: 20px;
+  }
+  #current-weather-section .meteo-data .current-location, #current-weather-section .meteo-data .conditions, #current-weather-section .meteo-data .wind, #current-weather-section .meteo-data .pressure, #current-weather-section .meteo-data .humidity, #current-weather-section .meteo-data .visibility {
+    padding: 4px 12px;
+    font-size: 11px;
+  }
+  #current-weather-section .meteo-data .current-location .current-time, #current-weather-section .meteo-data .conditions .current-time, #current-weather-section .meteo-data .wind .current-time, #current-weather-section .meteo-data .pressure .current-time, #current-weather-section .meteo-data .humidity .current-time, #current-weather-section .meteo-data .visibility .current-time {
+    font-size: 11px;
+    color: #bfbfbf;
+  }
+  #current-weather-section .meteo-data .current-location .title, #current-weather-section .meteo-data .conditions .title, #current-weather-section .meteo-data .wind .title, #current-weather-section .meteo-data .pressure .title, #current-weather-section .meteo-data .humidity .title, #current-weather-section .meteo-data .visibility .title {
+    padding-right: 6px;
+  }
+  #current-weather-section .meteo-data .current-location i, #current-weather-section .meteo-data .conditions i, #current-weather-section .meteo-data .wind i, #current-weather-section .meteo-data .pressure i, #current-weather-section .meteo-data .humidity i, #current-weather-section .meteo-data .visibility i {
+    padding: 0 2px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  #current-weather-section .temperature-data {
+    border: 11px solid #b3b3b3;
+    border-radius: 100%;
+    height: 210px;
+    width: 210px;
+    margin: 18px;
+  }
+  #current-weather-section .temperature-data img {
+    width: 80px;
+    height: 80px;
+  }
+  #current-weather-section .temperature-data .img-info {
+    font-size: 10px;
+  }
+  #current-weather-section .temperature-data .temperature {
+    font-size: 35px;
+  }
+  #current-weather-section .temperature-data .feels-like {
+    font-size: 12px;
+  }
+  #current-weather-section .meteo-data {
+    border-left: 5px solid #b3b3b3;
+    margin: 17px;
+  }
+  #current-weather-section .meteo-data .current-location, #current-weather-section .meteo-data .conditions, #current-weather-section .meteo-data .wind, #current-weather-section .meteo-data .pressure, #current-weather-section .meteo-data .humidity, #current-weather-section .meteo-data .visibility {
+    padding: 3px 10px;
+    font-size: 12px;
+  }
+  #current-weather-section .meteo-data .current-location .current-time, #current-weather-section .meteo-data .conditions .current-time, #current-weather-section .meteo-data .wind .current-time, #current-weather-section .meteo-data .pressure .current-time, #current-weather-section .meteo-data .humidity .current-time, #current-weather-section .meteo-data .visibility .current-time {
+    font-size: 10px;
+    color: #bfbfbf;
+  }
+  #current-weather-section .meteo-data .current-location .title, #current-weather-section .meteo-data .conditions .title, #current-weather-section .meteo-data .wind .title, #current-weather-section .meteo-data .pressure .title, #current-weather-section .meteo-data .humidity .title, #current-weather-section .meteo-data .visibility .title {
+    padding-right: 5px;
+  }
+  #current-weather-section .meteo-data .current-location i, #current-weather-section .meteo-data .conditions i, #current-weather-section .meteo-data .wind i, #current-weather-section .meteo-data .pressure i, #current-weather-section .meteo-data .humidity i, #current-weather-section .meteo-data .visibility i {
+    padding: 0 2px;
+  }
+}
+
+#five-day-weather-section {
+  margin: 80px 0;
+}
+#five-day-weather-section .five-day-weather-search {
+  padding: 18px 0;
+}
+#five-day-weather-section .five-day-weather-display .forecast-list {
+  padding: 0;
+}
+#five-day-weather-section .five-day-weather-display .list-header {
+  font-weight: bold;
+}
+#five-day-weather-section .five-day-weather-display .single-forecast {
+  margin: 8px 0;
+}
+#five-day-weather-section .five-day-weather-display .single-forecast .weather-icon {
+  width: 50px;
+  height: 50px;
+}
+@media only screen and (max-width: 1000px) {
+  #five-day-weather-section .forecast-list {
+    font-size: 14px;
+  }
+}
+@media only screen and (max-width: 780px) {
+  #five-day-weather-section .forecast-list {
+    font-size: 10px;
+  }
+}
+
+#nearest-installations-section {
+  margin: 80px 0;
+}
+#nearest-installations-section .single-installation {
+  margin: 12px 0;
+}
+#nearest-installations-section .single-installation .installation-header {
+  transition: background-color 0.2s;
+}
+#nearest-installations-section .single-installation .installation-header img {
+  width: 50px;
+  height: 50px;
+}
+#nearest-installations-section .single-installation .installation-header img, #nearest-installations-section .single-installation .installation-header .installation-name {
+  margin: 5px;
+}
+#nearest-installations-section .single-installation .installation-header:hover {
+  cursor: pointer;
+  background-color: #f2f2f2;
+}
+#nearest-installations-section .single-installation .installation-body {
+  padding: 20px;
+  border-right: 1px solid #e6e6e6;
+  border-bottom: 1px solid #e6e6e6;
+  border-left: 1px solid #e6e6e6;
+}
+#nearest-installations-section .single-installation .installation-body .installation-body-item {
+  padding: 3px 0;
+  margin: 3px 5px;
+}
+
+#air-quality-section {
+  margin: 80px 0;
+}
+#air-quality-section .air-quality-search {
+  padding: 18px 0;
+}
+#air-quality-section .air-quality-dispaly .airly-img {
+  width: 100px;
+  height: 100px;
+  margin: 0 15px;
+}
+#air-quality-section .air-quality-dispaly .air-index-data .data-container {
+  padding: 25px;
+  color: #ffffff;
+}
+#air-quality-section .air-quality-dispaly .air-index-data .data-container .description {
+  font-size: 20px;
+}
+#air-quality-section .air-quality-dispaly .air-index-data .data-container .index {
+  font-size: 25px;
+}
+#air-quality-section .air-quality-dispaly .air-index-data .data-container .value {
+  font-size: 35px;
+}
+#air-quality-section .air-quality-dispaly .air-quality-data .current-location {
+  padding: 5px 15px;
+  font-size: 18px;
+}
+#air-quality-section .air-quality-dispaly .air-quality-data .current-location .current-time {
+  font-size: 14px;
+  color: #bfbfbf;
+}
+#air-quality-section .air-quality-dispaly .air-quality-data .current-location i {
+  padding: 0 3px;
+}
+#air-quality-section .air-quality-dispaly .air-quality-data .quality-value {
+  font-size: 16px;
+  padding: 10px;
+  margin: 10px 10px;
+}
+#air-quality-section .air-quality-dispaly .air-quality-data .quality-value .pollution-data {
+  margin: 0 5px;
+}
+#air-quality-section .air-quality-dispaly .air-quality-data .quality-value i {
+  padding: 0 3px;
+}
+#air-quality-section .air-quality-dispaly .air-quality-data .title {
+  font-size: 20px;
+  padding-left: 5px;
+  margin: 8px 0;
+}
+@media only screen and (max-width: 1000px) {
+  #air-quality-section .air-quality-dispaly .airly-img {
+    width: 80px;
+    height: 80px;
+    margin: 0 12px;
+  }
+  #air-quality-section .air-quality-dispaly .air-index-data .data-container {
+    padding: 20px;
+    color: #ffffff;
+  }
+  #air-quality-section .air-quality-dispaly .air-index-data .data-container .description {
+    font-size: 16px;
+  }
+  #air-quality-section .air-quality-dispaly .air-index-data .data-container .index {
+    font-size: 20px;
+  }
+  #air-quality-section .air-quality-dispaly .air-index-data .data-container .value {
+    font-size: 28px;
+  }
+  #air-quality-section .air-quality-dispaly .air-quality-data .current-location {
+    padding: 4px 12px;
+    font-size: 15px;
+  }
+  #air-quality-section .air-quality-dispaly .air-quality-data .current-location .current-time {
+    font-size: 11px;
+    color: #bfbfbf;
+  }
+  #air-quality-section .air-quality-dispaly .air-quality-data .current-location i {
+    padding: 0 2px;
+  }
+  #air-quality-section .air-quality-dispaly .air-quality-data .quality-value {
+    font-size: 13px;
+    padding: 8px;
+    margin: 8px 8px;
+  }
+  #air-quality-section .air-quality-dispaly .air-quality-data .quality-value .pollution-data {
+    margin: 0 4px;
+  }
+  #air-quality-section .air-quality-dispaly .air-quality-data .quality-value i {
+    padding: 0 2px;
+  }
+  #air-quality-section .air-quality-dispaly .air-quality-data .title {
+    font-size: 16px;
+    padding-left: 4px;
+    margin: 6px 0;
+  }
+}
+@media only screen and (max-width: 600px) {
+  #air-quality-section .air-quality-dispaly .airly-img {
+    width: 70px;
+    height: 70px;
+    margin: 0 10px;
+  }
+  #air-quality-section .air-quality-dispaly .air-index-data {
+    margin-bottom: 25px;
+  }
+  #air-quality-section .air-quality-dispaly .air-index-data .data-container {
+    padding: 17px;
+    color: #ffffff;
+  }
+  #air-quality-section .air-quality-dispaly .air-index-data .data-container .description {
+    font-size: 14px;
+  }
+  #air-quality-section .air-quality-dispaly .air-index-data .data-container .index {
+    font-size: 17px;
+  }
+  #air-quality-section .air-quality-dispaly .air-index-data .data-container .value {
+    font-size: 24px;
+  }
+  #air-quality-section .air-quality-dispaly .air-quality-data .current-location {
+    padding: 3px 10px;
+    font-size: 12px;
+  }
+  #air-quality-section .air-quality-dispaly .air-quality-data .current-location .current-time {
+    font-size: 10px;
+    color: #bfbfbf;
+  }
+  #air-quality-section .air-quality-dispaly .air-quality-data .current-location i {
+    padding: 0 2px;
+  }
+  #air-quality-section .air-quality-dispaly .air-quality-data .quality-value {
+    font-size: 11px;
+    padding: 7px;
+    margin: 7px 7px;
+  }
+  #air-quality-section .air-quality-dispaly .air-quality-data .quality-value .pollution-data {
+    margin: 0 3px;
+  }
+  #air-quality-section .air-quality-dispaly .air-quality-data .quality-value i {
+    padding: 0 3px;
+  }
+  #air-quality-section .air-quality-dispaly .air-quality-data .title {
+    font-size: 14px;
+    padding-left: 3px;
+    margin: 5px 0;
+  }
+}
+
+#profile-page-section {
+  margin: 80px 0;
+  padding: 0 20px;
+}
+#profile-page-section .data-display .data-table-container {
+  margin: 35px;
+  padding: 10px;
+}
+#profile-page-section .data-display .data-table-container .table-title {
+  padding: 2px 0;
+  border-bottom: 3px solid #99ddff;
+}
+#profile-page-section .data-display .data-table-container .table {
+  margin: 35px 0;
+}
+#profile-page-section .data-display .data-table-container .table a {
+  text-decoration: none;
+  color: #000000;
+  transition: color 0.2s;
+}
+#profile-page-section .data-display .data-table-container .table a:hover {
+  text-decoration: none;
+  color: #ff0000;
+}
+#profile-page-section .saved-files-display .saved-files-container {
+  margin: 35px;
+  padding: 10px;
+}
+#profile-page-section .saved-files-display .saved-files-container .files-display-table {
+  margin: 35px 0;
+}
+#profile-page-section .saved-files-display .saved-files-container .files-display-table a {
+  text-decoration: none;
+  color: #000000;
+  transition: color 0.2s;
+}
+#profile-page-section .saved-files-display .saved-files-container .files-display-table a:hover {
+  text-decoration: none;
+  color: #ff0000;
+}
+#profile-page-section .saved-files-display .saved-files-container .files-display-table .open-file-link:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  color: #000000;
+}
+@media only screen and (max-width: 1000px) {
+  #profile-page-section .table {
+    font-size: 13px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  #profile-page-section .table {
+    font-size: 11px;
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */

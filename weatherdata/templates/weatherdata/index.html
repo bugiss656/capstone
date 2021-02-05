@@ -1,0 +1,47 @@
+{% extends 'weatherdata/layout.html' %}
+
+{% block body %}
+  <section id="index-section">
+    <div class="container">
+      <div class="jumbotron">
+        <div class="jumbotron-header">
+          <div class="row justify-content-center">
+            <h1 class="display-4">
+              <i class="fas fa-cloud logo"></i>
+              iMeteoStation
+            </h1>
+          </div>
+          <div class="row justify-content-center">
+            <p class="lead">
+              Search for meteorological data, save results and analyze it.
+            </p>
+          </div>
+        </div>
+        <hr>
+        <div class="row justify-content-around jumbotron-body">
+          <div class="col-md-3">
+            <div class="d-flex flex-column justify-content-center text-center">
+              <i class="fas fa-cloud-sun-rain"></i>
+              <h4>Weather & Air</h4>
+              <p>Search for weather and air data around the world</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="d-flex flex-column justify-content-center text-center">
+              <i class="fas fa-database"></i>
+              <h4>Save & analyze</h4>
+              <p>Save and analyze measuremets on your profile page</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="d-flex flex-column justify-content-center text-center">
+              <i class="fas fa-save"></i>
+              <h4>Export to file</h4>
+              <p>Export your measurements to excel file</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

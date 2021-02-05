@@ -1,0 +1,717 @@
+// BASE STYLES
+$section-margin: 80px 0;
+$primary-font: 'Montserrat';
+$secondary-font: 'Roboto Slab';
+
+
+%panel {
+  border-radius: 5px;
+  box-shadow: 0px 0px 2px 2px #e6e6e6;
+}
+
+%input {
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 16px;
+  box-sizing: border-box;
+  border: 2px solid #f2f2f2;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  outline: none;
+}
+
+%input-small {
+  width: 100%;
+  padding: 6px 10px;
+  font-size: 14px;
+  box-sizing: border-box;
+  border: 2px solid #f2f2f2;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  outline: none;
+}
+
+%button {
+  display: inline-block;
+  color: #b3b3b3;
+  background-color: #ffffff;
+  text-decoration: none;
+  border: 2px solid #b3b3b3;
+  border-radius: 3px;
+  transition: color 0.2s, background-color 0.2s, border 0.2s;
+}
+
+.section-title {
+  font-family: $primary-font;
+  font-size: 20px;
+}
+
+.button-confirm {
+  @extend %button;
+  padding: 1px 12px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.button-sm {
+  @extend %button;
+  padding: 6px 12px;
+  margin: 10px;
+  font-size: 14px;
+}
+
+.button-lg {
+  @extend %button;
+  padding: 8px 14px;
+  margin: 10px;
+  font-size: 18px;
+}
+
+.alert-box {
+  position: absolute !important;
+  z-index: 1;
+  width: 100%;
+  padding: 12px 20px;
+  font-size: 15px;
+}
+
+.success {
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+.info {
+  background-color: #fff3cd;
+  border-color: #ffeeba;
+}
+
+.warning {
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+.button-confirm:hover, .button-sm:hover, .button-lg:hover {
+  color: #ffffff;
+  background-color: #b3b3b3;
+  border: 2px solid #b3b3b3;
+}
+
+ .button-confirm:focus, .button-sm:focus, .button-lg:focus {
+   text-decoration: none;
+   outline: none;
+ }
+
+.login-input {
+  @extend %input;
+}
+
+.register-input {
+  @extend %input;
+}
+
+.search-input {
+  @extend %input;
+}
+
+.filename-input {
+  @extend %input-small;
+}
+
+.login-input:hover, .register-input:hover, .search-input:hover, .filename-input:hover, .login-input:focus, .register-input:focus, .search-input:focus, .filename-input:focus {
+  border: 2px solid #b3b3b3;
+}
+
+
+// BODY
+body {
+  font-family: $primary-font !important;
+}
+
+
+// NAVBAR
+#navbar {
+  font-size: 16px;
+
+  .fa-cloud {
+    color: #99ddff;
+  }
+
+}
+
+
+// INDEX
+#index-section {
+  margin: $section-margin;
+
+  .jumbotron {
+
+    .jumbotron-header {
+      .logo {
+        color: #99ddff;
+      }
+    }
+
+    .jumbotron-body {
+      margin-top: 50px;
+
+      i {
+        margin: 20px 0;
+        font-size: 60px;
+      }
+    }
+  }
+
+}
+
+
+// LOGIN, REGISTER
+#login-form {
+  margin: $section-margin;
+}
+
+#register-form {
+  margin: $section-margin;
+}
+
+
+// CURRENT WEATHER
+#current-weather-section {
+  margin: $section-margin;
+
+  .current-weather-search {
+    padding: 18px 0;
+  }
+
+  .current-weather-display {
+    @extend %panel;
+  }
+
+  .temperature-data {
+    border: 16px solid #b3b3b3;
+    border-radius: 100%;
+    height: 300px;
+    width: 300px;
+    margin: 25px;
+
+    .img-info {
+      font-size: 14px;
+    }
+
+    .temperature {
+      font-size: 50px;
+    }
+
+    .feels-like {
+      font-size: 18px;
+    }
+  }
+
+  .meteo-data {
+    border-left: 5px solid #b3b3b3;
+    margin: 25px 35px;
+
+    .current-location, .conditions, .wind, .pressure, .humidity, .visibility {
+      padding: 5px 15px;
+      font-size: 18px;
+
+      .current-time {
+        font-size: 14px;
+        color: #bfbfbf;
+      }
+
+      .title {
+        padding-right: 8px;
+      }
+
+      i {
+        padding: 0 3px;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 1000px) {
+
+    .temperature-data {
+      border: 16px solid #b3b3b3;
+      border-radius: 100%;
+      height: 240px;
+      width: 240px;
+      margin: 20px;
+
+      img {
+        width: 90px;
+        height: 90px;
+      }
+
+      .img-info {
+        font-size: 12px;
+      }
+
+      .temperature {
+        font-size: 40px;
+      }
+
+      .feels-like {
+        font-size: 15px;
+      }
+    }
+
+    .meteo-data {
+      border-left: 5px solid #b3b3b3;
+      margin: 20px;
+
+      .current-location, .conditions, .wind, .pressure, .humidity, .visibility {
+        padding: 4px 12px;
+        font-size: 11px;
+
+        .current-time {
+          font-size: 11px;
+          color: #bfbfbf;
+        }
+
+        .title {
+          padding-right: 6px;
+        }
+
+        i {
+          padding: 0 2px;
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+
+    .temperature-data {
+      border: 11px solid #b3b3b3;
+      border-radius: 100%;
+      height: 210px;
+      width: 210px;
+      margin: 18px;
+
+      img {
+        width: 80px;
+        height: 80px;
+      }
+
+      .img-info {
+        font-size: 10px;
+      }
+
+      .temperature {
+        font-size: 35px;
+      }
+
+      .feels-like {
+        font-size: 12px;
+      }
+    }
+
+    .meteo-data {
+      border-left: 5px solid #b3b3b3;
+      margin: 17px;
+
+      .current-location, .conditions, .wind, .pressure, .humidity, .visibility {
+        padding: 3px 10px;
+        font-size: 12px;
+
+        .current-time {
+          font-size: 10px;
+          color: #bfbfbf;
+        }
+
+        .title {
+          padding-right: 5px;
+        }
+
+        i {
+          padding: 0 2px;
+        }
+      }
+    }
+  }
+}
+
+
+// FIVE DAY WEATHER
+#five-day-weather-section {
+  margin: $section-margin;
+
+  .five-day-weather-search {
+    padding: 18px 0;
+  }
+
+  .five-day-weather-display {
+
+    .forecast-list {
+      padding: 0;
+    }
+
+    .list-header {
+      font-weight: bold;
+    }
+
+    .single-forecast {
+      @extend %panel;
+      margin: 8px 0;
+
+      .weather-icon {
+        width: 50px;
+        height: 50px;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 1000px) {
+    .forecast-list {
+      font-size: 14px;
+    }
+  }
+
+  @media only screen and (max-width: 780px) {
+    .forecast-list {
+      font-size: 10px;
+    }
+  }
+
+}
+
+
+// NEAREST INSTALLATIONS
+#nearest-installations-section {
+  margin: $section-margin;
+
+  .single-installation {
+    margin: 12px 0;
+
+    .installation-header {
+      @extend %panel;
+      transition: background-color 0.2s;
+
+      img {
+        width: 50px;
+        height: 50px;
+      }
+
+      img, .installation-name {
+        margin: 5px;
+      }
+    }
+
+    .installation-header:hover {
+      cursor: pointer;
+      background-color: #f2f2f2;
+    }
+
+    .installation-body {
+      padding: 20px;
+      border-right: 1px solid #e6e6e6;
+      border-bottom: 1px solid #e6e6e6;
+      border-left: 1px solid #e6e6e6;
+
+      .installation-body-item {
+        padding: 3px 0;
+        margin: 3px 5px;
+      }
+    }
+  }
+}
+
+
+// AIR QUALITY
+#air-quality-section {
+  margin: $section-margin;
+
+  .air-quality-search {
+    padding: 18px 0;
+  }
+
+  .air-quality-dispaly {
+    @extend %panel;
+
+    .airly-img {
+      width: 100px;
+      height: 100px;
+      margin: 0 15px;
+    }
+
+    .air-index-data {
+
+      .data-container {
+        padding: 25px;
+        color: #ffffff;
+
+        .description {
+          font-size: 20px;
+        }
+
+        .index {
+          font-size: 25px;
+        }
+
+        .value {
+          font-size:35px;
+        }
+      }
+    }
+
+    .air-quality-data {
+
+      .current-location {
+        padding: 5px 15px;
+        font-size: 18px;
+
+        .current-time {
+          font-size: 14px;
+          color: #bfbfbf;
+        }
+
+        i {
+          padding: 0 3px;
+        }
+      }
+
+      .quality-value {
+        @extend %panel;
+        font-size: 16px;
+        padding: 10px;
+        margin: 10px 10px;
+
+        .pollution-data {
+          margin: 0 5px;
+        }
+
+        i {
+          padding: 0 3px;
+        }
+      }
+
+      .title {
+        font-size: 20px;
+        padding-left: 5px;
+        margin: 8px 0;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 1000px) {
+
+    .air-quality-dispaly {
+
+      .airly-img {
+        width: 80px;
+        height: 80px;
+        margin: 0 12px;
+      }
+
+      .air-index-data {
+
+        .data-container {
+          padding: 20px;
+          color: #ffffff;
+
+          .description {
+            font-size: 16px;
+          }
+
+          .index {
+            font-size: 20px;
+          }
+
+          .value {
+            font-size: 28px;
+          }
+        }
+      }
+
+      .air-quality-data {
+
+        .current-location {
+          padding: 4px 12px;
+          font-size: 15px;
+
+          .current-time {
+            font-size: 11px;
+            color: #bfbfbf;
+          }
+
+          i {
+            padding: 0 2px;
+          }
+        }
+
+        .quality-value {
+          font-size: 13px;
+          padding: 8px;
+          margin: 8px 8px;
+
+          .pollution-data {
+            margin: 0 4px;
+          }
+
+          i {
+            padding: 0 2px;
+          }
+        }
+
+        .title {
+          font-size: 16px;
+          padding-left: 4px;
+          margin: 6px 0;
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+
+    .air-quality-dispaly {
+
+      .airly-img {
+        width: 70px;
+        height: 70px;
+        margin: 0 10px;
+      }
+
+      .air-index-data {
+        margin-bottom: 25px;
+
+        .data-container {
+          padding: 17px;
+          color: #ffffff;
+
+          .description {
+            font-size: 14px;
+          }
+
+          .index {
+            font-size: 17px;
+          }
+
+          .value {
+            font-size: 24px;
+          }
+        }
+      }
+
+      .air-quality-data {
+
+        .current-location {
+          padding: 3px 10px;
+          font-size: 12px;
+
+          .current-time {
+            font-size: 10px;
+            color: #bfbfbf;
+          }
+
+          i {
+            padding: 0 2px;
+          }
+        }
+
+        .quality-value {
+          font-size: 11px;
+          padding: 7px;
+          margin: 7px 7px;
+
+          .pollution-data {
+            margin: 0 3px;
+          }
+
+          i {
+            padding: 0 3px;
+          }
+        }
+
+        .title {
+          font-size: 14px;
+          padding-left: 3px;
+          margin: 5px 0;
+        }
+      }
+    }
+  }
+}
+
+
+// PROFILE PAGE
+#profile-page-section {
+  margin: $section-margin;
+  padding: 0 20px;
+
+  .data-display {
+
+    .data-table-container {
+      @extend %panel;
+      margin: 35px;
+      padding: 10px;
+
+      .table-title {
+        padding: 2px 0;
+        border-bottom: 3px solid #99ddff;
+      }
+
+      .table {
+        margin: 35px 0;
+
+        a {
+          text-decoration: none;
+          color: #000000;
+          transition: color 0.2s;
+        }
+
+        a:hover {
+          text-decoration: none;
+          color: #ff0000;
+        }
+      }
+    }
+  }
+
+  .saved-files-display {
+
+    .saved-files-container {
+      @extend %panel;
+      margin: 35px;
+      padding: 10px;
+
+      .files-display-table {
+        margin: 35px 0;
+
+        a {
+          text-decoration: none;
+          color: #000000;
+          transition: color 0.2s;
+        }
+
+        a:hover {
+          text-decoration: none;
+          color: #ff0000;
+        }
+
+        .open-file-link:hover {
+          cursor: pointer;
+          text-decoration: underline;
+          color: #000000;
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 1000px) {
+
+    .table {
+      font-size: 13px;
+    }
+
+  }
+
+  @media only screen and (max-width: 600px) {
+
+    .table {
+      font-size: 11px;
+    }
+
+  }
+}

@@ -1,0 +1,117 @@
+{% extends 'weatherdata/layout.html' %}
+
+{% block body %}
+  <div class="display-alert"></div>
+  <div class="container">
+    <section id="current-weather-section">
+      <div class="current-weather-search">
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <p class="section-title text-center">Display current weather data for a given city or town</p>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <form method="post" class="current-weather-form">
+              {% csrf_token %}
+              <div class="input-group justify-content-center">
+                <div class="input-group-prepend">
+                  <input type="text" name="city" class="search-input" spellcheck="false" autocomplete="off">
+                </div>
+                <button class="button-confirm" type="submit">Search</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      {% if http_response == 200 %}
+        <h5 style="margin: 60px 0 30px 0;">
+          <i class="fas fa-cloud-sun-rain" style="padding: 0 6px;"></i>CURRENT WEATHER
+          <hr>
+        </h5>
+        <div class="current-weather-display">
+          <div class="row justify-content-center">
+            <div class="d-flex col-md-5 justify-content-center">
+              <div class="d-flex flex-column justify-content-center align-items-center temperature-data">
+                <div class="d-flex flex-column align-items-center weather-icon">
+                  <img src="https://openweathermap.org/img/wn/{{ info_icon }}@2x.png" alt="No image">
+                  <div class="img-info">{{ info_main }}</div>
+                </div>
+                <div class="temperature">
+                  <strong>{{ temperature }}&degC</strong>
+                </div>
+                <div class="feels-like">
+                  Feels like: {{ feels_like }}&degC
+                </div>
+              </div>
+            </div>
+
+            <div class="d-flex col-md-5 justify-content-center align-items-center">
+              <div class="d-flex flex-column meteo-data">
+                <div class="current-location">
+                  <h4><i class="fas fa-location-arrow"></i><strong>{{ city_name }}, {{ country }}</strong></h4>
+                  <p class="current-time">{{ display_time }}</p>
+                </div>
+                <div class="conditions"><strong>Weather:</strong> {{ info_description }}</div>
+                <div class="d-flex flex-row wind">
+                  <div class="title">
+                    <strong><i class="fas fa-wind"></i>Wind:</strong>
+                  </div>
+                  <div class="measurement">
+                    <i class="fas fa-long-arrow-alt-up" style="transform: rotate({{ wind_direction }}deg);"></i> {{ wind_speed }} m/s
+                  </div>
+                </div>
+                <div class="d-flex flex-row pressure">
+                  <div class="title">
+                    <strong><i class="far fa-compass"></i>Pressure:</strong>
+                  </div>
+                  <div class="measurement">
+                    {{ pressure }} hPa
+                  </div>
+                </div>
+                <div class="d-flex flex-row humidity">
+                  <div class="title">
+                    <strong><i class="fas fa-water" style="transform: rotate(90deg);"></i>Humidity:</strong>
+                  </div>
+                  <div class="measurement">
+                    {{ humidity }} %
+                  </div>
+                </div>
+                <div class="d-flex flex-row visibility">
+                  <div class="title">
+                    <strong><i class="far fa-eye"></i>Visibility:</strong>
+                  </div>
+                  <div class="measurement">
+                    {{ visibility }} km
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-5">
+              <button data-data-type="current_weather"
+                      data-city-name="{{ city_name }}"
+                      data-country="{{ country }}"
+                      data-measurement-time="{{ measurement_time }}"
+                      data-temp="{{ temperature }}"
+                      data-feels-like="{{ feels_like }}"
+                      data-wind-speed="{{ wind_speed }}"
+                      data-wind-direction="{{ wind_direction }}"
+                      data-pressure="{{ pressure }}"
+                      data-humidity="{{ humidity }}"
+                      data-visibility="{{ visibility }}"
+                      data-info-main="{{ info_main }}"
+                      data-info-description="{{ info_description }}"
+                      data-info-icon="{{ info_icon }}"
+
+                      id="save-weather-results" class="button-lg" type="button">Save results</button>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    </section>
+  </div>
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends 'weatherdata/layout.html' %}
+
+{% block body %}
+  <div class="container">
+    <section id="nearest-installations-section">
+      <div class="nearest-installations-search">
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <p class="section-title text-center">Display nearest air quality sensor installations for a given town or city (within 3 km)</p>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <form method="post" class="nearest-installations-form">
+              {% csrf_token %}
+              <div class="input-group justify-content-center">
+                <div class="input-group-prepend">
+                  <input type="text" name="city" class="search-input" spellcheck="false" autocomplete="off">
+                </div>
+                <button class="button-confirm" type="submit">Search</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      {% if nearest_installations %}
+        <h5 style="margin: 60px 0 30px 0;">
+          <i class="fas fa-broadcast-tower" style="padding: 0 6px;"></i>NEAREST SENSOR INSTALLATIONS
+          <hr>
+        </h5>
+        <div class="nearest-installations-display">
+          <div class="accordion" id="nearest-installations-accordion">
+            {% for installation in nearest_installations %}
+              <div class="single-installation">
+                <div class="installation-header" data-toggle="collapse" data-target="#installation-{{ installation.id }}">
+                  <div class="row">
+                    <div class="d-flex align-items-center col-md-1">
+                      <img src="{{ installation.sponsor.logo }}" alt="No image">
+                    </div>
+                    <div class="d-flex align-items-center col-md-6">
+                      <div class="installation-name">{{ installation.sponsor.name }}</div>
+                    </div>
+                  </div>
+                </div>
+                <div id="installation-{{ installation.id }}" class="collapse" data-parent="#nearest-installations-accordion">
+                  <div class="installation-body">
+                    <div class="d-flex flex-column row">
+                      <div class="installation-body-item"><strong>Installation ID: </strong>{{ installation.id }}</div>
+                      <div class="installation-body-item"><strong>Address: </strong>{{ installation.address.street }} {{ installation.address.number }} {{ installation.address.city }}, {{ installation.address.country }}</div>
+                      <div class="installation-body-item"><strong>Sponsor: </strong>{{ installation.sponsor.name }}</div>
+                      <div class="installation-body-item"><strong>Info: </strong>{{ installation.sponsor.description }}</div>
+                      <div class="installation-body-item">
+                        <strong>Sponsor site: </strong>
+                        {% if installation.sponsor.link != None %}
+                          <a href="{{ installation.sponsor.link }}" target="_blank">{{ installation.sponsor.link }}</a>
+                        {% else %}
+                          <span>-</span>
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+    </section>
+  </div>
+{% endblock %}

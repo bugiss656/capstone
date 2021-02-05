@@ -1,0 +1,77 @@
+{% extends 'weatherdata/layout.html' %}
+
+{% block body %}
+  <div class="container">
+    <section id="five-day-weather-section">
+      <div class="five-day-weather-search">
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <p class="lead text-center">Display 5 day weather forecast for a given city</p>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <form method="post" class="five-day-weather-form">
+              {% csrf_token %}
+              <div class="input-group justify-content-center">
+                <div class="input-group-prepend">
+                  <input type="text" name="city" class="search-input" spellcheck="false" autocomplete="off">
+                </div>
+                <button class="button-confirm" type="submit">Search</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      {% if http_response == '200' %}
+        <h5 style="margin: 60px 0 30px 0;">
+          <i class="fas fa-cloud-sun-rain" style="padding: 0 6px;"></i>FIVE DAY FORECAST(every 3h): <i class="fas fa-location-arrow" style="padding: 0 6px;"></i>{{ city }}
+          <hr>
+        </h5>
+        <div class="five-day-weather-display">
+          <ul class="d-flex flex-column justify-content-center forecast-list">
+            <li class="row d-flex justify-content-between align-items-center single-forecast list-header">
+              <div class="d-flex justify-content-center col-md-3">
+                <div>Date</div>
+              </div>
+              <div class="d-flex justify-content-center col-md-1">
+                <div>Weather</div>
+              </div>
+              <div class="d-flex justify-content-center col-md-2">
+                <div>Temperature</div>
+              </div>
+              <div class="d-flex justify-content-center col-md-1">
+                <div>Humidity</div>
+              </div>
+              <div class="d-flex justify-content-center col-md-2">
+                <div>Description</div>
+              </div>
+            </li>
+            {% for forecast in five_day_forecast %}
+              <li class="row d-flex justify-content-between align-items-center single-forecast">
+                <div class="d-flex justify-content-center col-md-3">
+                  <div>{{ forecast.dt_txt }}</div>
+                </div>
+                <div class="d-flex justify-content-center col-md-1">
+                  <img src="https://openweathermap.org/img/wn/{{ forecast.weather.0.icon }}@2x.png" class="weather-icon" alt="No image">
+                </div>
+                <div class="d-flex justify-content-center col-md-2">
+                  <div>{{ forecast.main.temp|floatformat:"0" }}&degC / {{ forecast.main.feels_like|floatformat:"0" }}&degC</div>
+                </div>
+                <div class="d-flex justify-content-center col-md-1">
+                  <div>
+                    {{ forecast.main.humidity }}%
+                  </div>
+                </div>
+                <div class="d-flex justify-content-center col-md-2">
+                  <div>{{ forecast.weather.0.description }}</div>
+                </div>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+    </section>
+  </div>
+{% endblock %}

@@ -1,0 +1,128 @@
+{% extends 'weatherdata/layout.html' %}
+
+{% block body %}
+  <div class="display-alert"></div>
+  <div class="container">
+    <section id="air-quality-section">
+      <div class="air-quality-search">
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <p class="section-title text-center">Display current air quality for a given city</p>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <form method="post" class="air-quality-form">
+              {% csrf_token %}
+              <div class="input-group justify-content-center">
+                <div class="input-group-prepend">
+                  <input type="text" name="city" class="search-input" spellcheck="false" autocomplete="off">
+                </div>
+                <button class="button-confirm" type="submit">Search</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      {% if http_response == 200 %}
+        <h5 style="margin: 60px 0 30px 0;">
+          <i class="fas fa-smog" style="padding: 0 6px;"></i>CURRENT AIR QUALITY
+          <hr>
+        </h5>
+        <div class="air-quality-dispaly">
+          <div class="row justify-content-end">
+            <div class="d-flex col-md-6 justify-content-end">
+              <img src="https://cdn.airly.eu/assets/brand/logo/primary/airly.svg" alt="No image" class="airly-img">
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="d-flex col-md-5 justify-content-center align-items-center">
+              <div class="air-index-data" style="background-color: {{ index_color }};">
+                <div class="d-flex flex-column align-items-center data-container">
+                  <div class="description">
+                    {{ index_description }}
+                  </div>
+                  <div class="index">
+                    <strong>CAQI:</strong>
+                  </div>
+                  <div class="value">
+                    <strong>{{ index_value }}</strong>
+                  </div>
+                  <div class="level">
+                    <strong>{{ index_level }}</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="d-flex col-md-5 justify-content-center">
+              <div class="d-flex flex-column justify-content-center align-items-center air-quality-data">
+                <div class="current-location">
+                  <div><h4><i class="fas fa-location-arrow"></i><strong>{{ city_name|title }}</strong></h4></div>
+                  <div class="current-time">{{ display_time }}</div>
+                </div>
+                <div class="d-flex flex-row align-items-center">
+                  <div class="title">Suspended pollutants:</div>
+                </div>
+                <div class="d-flex flex-row">
+                  <div class="quality-value">
+                    <div class="d-flex justify-content-center">
+                      <div>
+                        <strong><i class="fas fa-smog"></i>PM1</strong>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-column">
+                      <div class="pollution-data"><strong>current: </strong>{{ pm1 }} &microg/m&#179</div>
+                      <div class="pollution-data"><strong>limit: </strong>-</div>
+                    </div>
+                  </div>
+                  <div class="quality-value">
+                    <div class="d-flex justify-content-center">
+                      <div>
+                        <strong><i class="fas fa-smog"></i>PM2.5</strong>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-column">
+                      <div class="pollution-data"><strong>current: </strong>{{ pm25 }} &microg/m&#179</div>
+                      <div class="pollution-data"><strong>limit: </strong>{{ pm25_limit }} &microg/m&#179</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="d-flex flex-row">
+                  <div class="quality-value">
+                    <div class="d-flex justify-content-center">
+                      <div>
+                        <strong><i class="fas fa-smog"></i>PM10</strong>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-column">
+                      <div class="pollution-data"><strong>current: </strong>{{ pm10 }} &microg/m&#179</div>
+                      <div class="pollution-data"><strong>limit: </strong>{{ pm10_limit }} &microg/m&#179</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-5">
+              <button data-data-type="current_air"
+                      data-city-name="{{ city_name }}"
+                      data-measurement-time="{{ measurement_time }}"
+                      data-pm1="{{ pm1 }}"
+                      data-pm25="{{ pm25 }}"
+                      data-pm10="{{ pm10 }}"
+                      data-index-value="{{ index_value }}"
+                      data-index-level="{{ index_level }}"
+                      data-index-description="{{ index_description }}"
+                      data-index-color="{{ index_color }}"
+
+                      id="save-air-results" class="button-lg" type="button">Save results</button>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    </section>
+  </div>
+{% endblock %}

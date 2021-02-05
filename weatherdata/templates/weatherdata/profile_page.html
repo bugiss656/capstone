@@ -1,0 +1,220 @@
+{% extends 'weatherdata/layout.html' %}
+
+{% block body %}
+  <div class="display-alert"></div>
+  <section id="profile-page-section">
+    <h4>
+      <i class="fas fa-columns"></i>
+      DASHBOARD
+    </h4>
+    <hr>
+    <div class="data-display">
+      <div class="row justify-content-center">
+        <div class="col-md-10 data-table-container overflow-auto">
+          <h5 class="table-title d-inline">Weather measurements</h5>
+          <table class="table table-sm table-hover">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">Date</th>
+                <th scope="col">City</th>
+                <th scope="col">Country</th>
+                <th scope="col">Temperature</th>
+                <th scope="col">Feels like</th>
+                <th scope="col">Wind speed</th>
+                <th scope="col">Wind direction</th>
+                <th scope="col">Pressure</th>
+                <th scope="col">Humidity</th>
+                <th scope="col">Visibility</th>
+                <th scope="col">
+                  <a href="{% url 'delete_all_weather' %}" class="delete-all-data"><i class="fas fa-trash-alt"></i></a>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for row in temperature_data %}
+                <tr>
+                  <td>{{ row.measurement_time }}</td>
+                  <td>{{ row.city_name }}</td>
+                  <td>{{ row.country }}</td>
+                  <td>{{ row.temperature }}&degC</td>
+                  <td>{{ row.feels_like }}&degC</td>
+                  <td>{{ row.wind_speed }}m/s</td>
+                  <td>{{ row.wind_direction }}&deg</td>
+                  <td>{{ row.pressure }}hPa</td>
+                  <td>{{ row.humidity }}%</td>
+                  <td>{{ row.visibility }}km</td>
+                  <td>
+                    <a href="{% url 'delete_single_weather' row.id %}" class="delete-single-data"><i class="fas fa-trash-alt"></i></a>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          {% if not temperature_data %}
+            <div class="row justify-content-center" style="margin: 10px 15px">
+              <h3>No measurements saved</h3>
+            </div>
+          {% else %}
+            <div class="row justify-content-end">
+              <button class="button button-sm" type="button" data-toggle="modal" data-target="#temperature-modal">
+                <i class="fas fa-save"></i>
+                Save in Excel file
+              </button>
+              <div id="temperature-modal" class="modal fade">
+                <form method="post" action="{% url 'save_weatherdata' %}">
+                  {% csrf_token %}
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title">
+                          <i class="fas fa-file-excel"></i>
+                          Save temperature data in Excel file
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="form-row justify-content-center align-items-center">
+                          <div class="col-md-5">
+                            <input type="text" name="filename-input" id="weatherdata-input" class="filename-input" autocomplete="off" spellchecl="false" placeholder="Enter file name...">
+                          </div>
+                          <div class="col-md-1" style="font-size: 18px;">.xlsx</div>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="button button-sm" data-dismiss="modal">Close</button>
+                        <button type="submit" class="button button-sm save-to-file-btn">Save</button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-8 data-table-container">
+          <h5 class="table-title d-inline">Air quality measurements</h5>
+          <table class="table table-sm table-hover">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">Date</th>
+                <th scope="col">City</th>
+                <th scope="col">PM1</th>
+                <th scope="col">PM2.5</th>
+                <th scope="col">PM10</th>
+                <th scope="col">
+                  <a href="{% url 'delete_all_air' %}" class="delete-all-data"><i class="fas fa-trash-alt"></i></a>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for row in air_data %}
+                <tr>
+                  <td>{{ row.measurement_time }}</td>
+                  <td>{{ row.city_name }}</td>
+                  <td>{{ row.pm1 }} &microg/m&#179</td>
+                  <td>{{ row.pm25 }} &microg/m&#179</td>
+                  <td>{{ row.pm10 }} &microg/m&#179</td>
+                  <td>
+                    <a href="{% url 'delete_single_air' row.id %}" class="delete-single-data"><i class="fas fa-trash-alt"></i></a>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          {% if not air_data %}
+            <div class="row justify-content-center" style="margin: 10px 15px">
+              <h3>No measurements saved</h3>
+            </div>
+          {% else %}
+            <div class="row justify-content-end">
+              <button class="button button-sm" type="button" data-toggle="modal" data-target="#air-quality-modal">
+                <i class="fas fa-save"></i>
+                Save in Excel file
+              </button>
+              <div id="air-quality-modal" class="modal fade">
+                <form method="post" action="{% url 'save_airdata' %}">
+                  {% csrf_token %}
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title">
+                          <i class="fas fa-file-excel"></i>
+                          Save air quality data in Excel file
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="form-row justify-content-center align-items-center">
+                          <div class="col-md-5">
+                            <input type="text" name="filename-input" id="airquality-input" class="filename-input" autocomplete="off" spellcheck="false" placeholder="Enter file name...">
+                          </div>
+                          <div class="col-md-1" style="font-size: 18px;">.xlsx</div>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="button button-sm" data-dismiss="modal">Close</button>
+                        <button type="submit" class="button button-sm save-to-file-btn">Save</button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <h4>
+      <i class="far fa-folder-open"></i>
+      SAVED DATA
+    </h4>
+    <hr>
+    <div class="saved-files-display">
+      <div class="row justify-content-center">
+        <div class="col-md-8 saved-files-container">
+          <table class="table table-sm table-hover files-display-table">
+            <thead>
+              <tr>
+                <th scope="col">File name</th>
+                <th scope="col">Created</th>
+                <th scope="col">Modified</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for file in files %}
+                <tr>
+                  <td>
+                    <div data-filename="{{ file.name }}" class="open-file-link">
+                      <i class="fas fa-file-excel"></i>
+                      {{ file.name }}
+                    </div>
+                  </td>
+                  <td>{{ file.created }}</td>
+                  <td>{{ file.modified }}</td>
+                  <td>
+                    <a href="{% url 'delete_file' file.name %}">
+                      <i class="fas fa-trash-alt"></i>
+                    </a>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          {% if not files %}
+            <div class="row justify-content-center" style="margin: 10px 15px">
+              <h3>No files saved</h3>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}
